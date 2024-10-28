@@ -1,0 +1,829 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Pacifico&family=Roboto:wght@300;400;700&display=swap');
+
+/* Reset some default browser styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lora', serif; /* Elegant serif font for body text */
+    background-color: #f5f5f5; /* Soft light gray for a gentle backdrop */
+    color: #3d2c1f; /* Dark brown for text */
+    line-height: 1.6;
+}
+
+/* Header Styling */
+header {
+    background: linear-gradient(135deg, #f9e5d7, #f4c2b4); /* Soft gradient */
+    padding: 15px 30px; /* Reduce padding for a slimmer look */
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Navbar Styling */
+html {
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px; /* Reduce width for compact layout */
+    margin: 0 auto;
+    position: relative;
+    z-index: 1000;
+}
+
+.logo-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 36px; /* Reduce font size for balance */
+    color: #6a4e1a;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15); /* Softer shadow */
+    animation: slideIn 1s forwards;
+}
+
+nav {
+    flex-grow: 1;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Reduce gap for better spacing */
+    opacity: 0;
+    transform: translateY(-15px);
+    animation: slideIn 1.5s forwards;
+    animation-delay: 0.5s;
+}
+
+.nav-links li {
+    position: relative; /* For positioning the underline */
+}
+
+.nav-links li a {
+    color: #3d2c1f;
+    text-decoration: none;
+    font-size: 18px; /* Slightly smaller for aesthetics */
+    font-weight: 500;
+    padding: 10px 20px; /* Padding around links */
+    transition: color 0.3s ease;
+}
+
+/* Underline effect using a pseudo-element */
+.nav-links li a::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px; /* Thickness of the underline */
+    background-color: #6a4e1a; /* Color of the underline */
+    position: absolute;
+    bottom: -5px; /* Position below the text */
+    left: 0;
+    transform: scaleX(0); /* Start with no width */
+    transition: transform 0.3s ease; /* Animation for underline */
+}
+
+/* Active link styling */
+.nav-links li a.active {
+    color: #6a4e1a; /* Active link color */
+}
+
+/* Hover effect for links */
+.nav-links li a:hover {
+    color: #6a4e1a; /* Change color on hover */
+}
+
+.nav-links li a:hover::after,
+.nav-links li a.active::after {
+    transform: scaleX(1); /* Expand underline on hover and active state */
+}
+
+.auth-links {
+    color: #3d2c1f;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Adjusted gap */
+    opacity: 0;
+    transform: translateX(40px);
+    animation: slideIn 2s forwards;
+    animation-delay: 0.7s;
+}
+
+.auth-links a {
+    color: #6a4e1a;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: #3d2c1f;
+    text-decoration: underline;
+}
+
+/* Slide-in animation */
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 20px; /* Reduced gap on mobile */
+    }
+
+    .auth-links {
+        justify-content: center;
+    }
+
+    .logo-text {
+        font-size: 28px; /* Smaller logo text on mobile */
+    }
+}
+
+
+
+/* Slideshow container */
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+    border-radius: 15px; /* Add rounded corners */
+}
+
+/* Slides */
+.mySlides {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+/* Image styling */
+.mySlides img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover; /* Ensures images cover the full screen */
+    filter: brightness(75%); /* Darker overlay for better text visibility */
+}
+
+/* Banner content (text + button) */
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    z-index: 2;
+}
+
+.banner-content h1 {
+    font-size: 4vw; /* Responsive font size */
+    font-family: 'Pacifico', cursive; /* Playful font for main heading */
+    margin-bottom: 20px;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5); /* Enhanced shadow for readability */
+    transition: transform 0.3s ease; /* Smooth scaling effect */
+}
+
+.banner-content p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2vw; /* Responsive font size */
+    margin-bottom: 40px;
+    line-height: 1.8;
+    max-width: 800px; /* Increased max width for larger screens */
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.banner-content .btn {
+    padding: 15px 30px;
+    background-color: #f9e5d7;
+    color: #6a4e1a;
+    text-decoration: none;
+    font-size: 2vw; /* Responsive font size */
+    border-radius: 30px; /* Rounded edges for a softer look */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.banner-content .btn:hover {
+    background-color: #6a4e1a;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    color: #fff;
+    font-size: 2vw; /* Responsive font size */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Darken on hover */
+}
+
+/* Dots (indicators) */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+    background-color: #717171; /* Darker color for active dot */
+}
+
+/* Add fade-in animation */
+@keyframes fade {
+    from { opacity: 0.4 }
+    to { opacity: 1 }
+}
+
+.mySlides {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .banner-content h1 {
+        font-size: 6vw; /* Smaller for smaller screens */
+    }
+    
+    .banner-content p {
+        font-size: 4vw; /* Smaller for smaller screens */
+    }
+
+    .banner-content .btn {
+        font-size: 4vw; /* Smaller for smaller screens */
+    }
+
+    .prev, .next {
+        font-size: 4vw; /* Smaller for smaller screens */
+    }
+}
+
+
+/* Best Sellers Section Styling */
+.best-sellers-section {
+    text-align: center;
+    margin: 40px auto;
+    padding: 30px;
+    max-width: 1100px;
+    background-color: #fdf7f0; /* Light background to make section stand out */
+    border-radius: 10px; /* Smooth border */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05); /* Softer shadow for depth */
+}
+
+.best-sellers-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    color: #6a4e1a;
+    margin-bottom: 25px;
+    position: relative;
+    letter-spacing: 1px; /* Slight letter spacing for elegance */
+}
+
+.best-sellers-section h2::after {
+    content: '';
+    width: 70px; /* Initial underline width */
+    height: 3px; /* Underline height */
+    background-color: #b57a4f; /* Accent color */
+    display: block; /* Block for margin */
+    margin: 8px auto 0; /* Centering and spacing */
+    transition: width 0.4s ease; /* Smooth transition */
+}
+
+/* Add an animation on hover for the heading */
+.best-sellers-section h2:hover::after {
+    width: 100px; /* Expand line on hover */
+}
+
+/* Best Sellers Container */
+.best-sellers {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.best-seller-item {
+    flex: 1;
+    text-align: center;
+    padding: 25px;
+    background-color: #fdf7f0;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.best-seller-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.img-container {
+    width: 100%;
+    height: 0;
+    padding-bottom: 95%; /* Keeps the image container slightly more compact */
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.img-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.img-container img:hover {
+    transform: scale(1.08);
+    filter: brightness(1.08);
+}
+
+.best-seller-item h3 {
+    font-family: 'Lora', serif;
+    font-size: 20px;
+    color: #5d4e42;
+    margin-top: 12px;
+}
+
+.rating {
+    font-size: 20px;
+    color: #f4b400;
+    margin-top: 8px;
+    letter-spacing: 1.5px;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .best-sellers {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .best-seller-item {
+        max-width: 100%;
+    }
+}
+
+
+
+/* About Us Section */
+.aboutUs {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 20px 40px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(135deg, rgba(245, 245, 245, 0.9), rgba(255, 255, 255, 0.7));
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* About Content */
+.aboutContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+
+/* About Image */
+.aboutImg {
+    flex: 1;
+    max-width: 350px;
+    transition: transform 0.4s ease;
+}
+
+.aboutImg:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    transition: box-shadow 0.3s ease;
+}
+
+/* About Text */
+.about-text {
+    flex: 2;
+    text-align: left;
+    line-height: 1.7; /* Improved readability */
+}
+
+/* Section Heading Styling */
+.aboutUs h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    color: #6a4e1a;
+    margin-bottom: 25px;
+    position: relative;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.aboutUs h2::after {
+    content: '';
+    width: 70px;
+    height: 3px;
+    background-color: #b57a4f;
+    display: block;
+    margin: 8px auto 0;
+    transition: width 0.4s ease;
+}
+
+.aboutUs:hover h2::after {
+    width: 100px;
+}
+
+/* About Story Title */
+.about-text h3 {
+    font-family: 'Lora', serif;
+    font-size: 24px;
+    color: #5d4e42;
+    margin-top: 20px;
+}
+
+/* Button Styling */
+.btn {
+    background-color: #b57a4f;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: 'Lora', serif;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #6a4e1a;
+    transform: translateY(-3px); /* Lift effect on hover */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .aboutContent {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .aboutImg {
+        max-width: 100%;
+    }
+}
+
+
+
+
+/* General Styles for Sections */
+section {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Testimonials Section Styles */
+.testimonials-section {
+    background: linear-gradient(145deg, #fdf7f0, #f0ece8); /* Soft gradient background */
+    padding: 80px 20px; /* Generous padding for spacing */
+    border-radius: 20px; /* Softer rounded corners */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); /* Enhanced shadow for depth */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px; /* Increased space between testimonials */
+}
+
+.testimonial-item {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px; /* Comfortable inner spacing */
+    max-width: 300px; /* Larger max width for testimonials */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-item:hover {
+    transform: scale(1.07); /* Slightly more zoom on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+.testimonial-item img {
+    width: 140px; /* Increased image size */
+    height: 140px;
+    border-radius: 50%; /* Circular shape */
+    margin-bottom: 18px; /* Space below image */
+    border: 4px solid #e5d6cd; /* Border color matching theme */
+    transition: transform 0.3s ease;
+}
+
+.testimonial-item img:hover {
+    transform: scale(1.12); /* Enhanced zoom effect on image hover */
+}
+
+/* Refined underline for "What Our Customers Say" */
+.testimonials-section h2 {
+    position: relative;
+    font-family: 'Playfair Display', serif;
+    color: #6a4e1a; /* Darker brown for emphasis */
+    display: inline-block;
+    margin: 0 0 25px; /* Additional space below heading */
+    font-size: 32px; /* Larger font for heading */
+    transition: transform 0.3s ease;
+}
+
+.testimonials-section h2:hover {
+    transform: translateY(-6px); /* Slight upward movement on hover */
+}
+
+.testimonials-section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px; /* Increased space below the heading */
+    width: 70px; /* Adjusted underline width */
+    height: 5px; /* Height of underline */
+    background-color: #b57a4f; /* Warm accent color */
+    transition: width 0.4s ease, left 0.4s ease;
+    transform: translateX(-50%);
+}
+
+.testimonials-section h2:hover::after {
+    width: 90px; /* Wider underline on hover */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .testimonial-items {
+        flex-direction: column;
+        gap: 25px; /* Reduced gap for smaller screens */
+    }
+
+    .testimonial-item {
+        max-width: 85%; /* Full width on smaller screens */
+    }
+}
+
+
+/* Featured Drinks Section Styling */
+.featured-drinks-section {
+    text-align: center; /* Center align text */
+    margin: 40px auto; /* Margin for spacing */
+    padding: 30px; /* Padding around the section */
+    max-width: 1100px; /* Max width for the section */
+}
+
+/* Section Heading */
+.featured-drinks-section h2 {
+    font-family: 'Playfair Display', serif; /* Elegant font style */
+    font-size: 34px; /* Font size for heading */
+    color: #6a4e1a; /* Dark brown color */
+    margin-bottom: 25px; /* Space below heading */
+    position: relative; /* Position for underline */
+    letter-spacing: 1px; /* Letter spacing for elegance */
+}
+
+.featured-drinks-section h2::after {
+    content: ''; /* Underline after heading */
+    width: 70px; /* Underline width */
+    height: 3px; /* Underline height */
+    background-color: #b57a4f; /* Accent color */
+    display: block; /* Block for margin */
+    margin: 8px auto 0; /* Centering and spacing */
+}
+
+/* Featured Drinks Container */
+.featured-drinks {
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    gap: 30px; /* Increased gap for spacing */
+    max-width: 1100px; /* Max width for container */
+    margin: 0 auto; /* Centering */
+    padding: 20px 0; /* Padding for top and bottom */
+}
+
+/* Individual Drink Item */
+.featured-drink-item {
+    flex: 1; /* Flexible sizing */
+    text-align: center; /* Center text */
+    padding: 20px; /* Inner padding */
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 10px; /* Slightly rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition effects */
+}
+
+.featured-drink-item:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+/* Image Container */
+.img-container {
+    width: 100%; /* Full width */
+    height: 0; /* Height based on padding */
+    padding-bottom: 95%; /* Aspect ratio for images */
+    position: relative; /* Position for absolute child */
+    overflow: hidden; /* Hide overflow */
+    border-radius: 10px; /* Match rounded corners */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for images */
+}
+
+.img-container img {
+    position: absolute; /* Positioning for scaling */
+    top: 0; /* Align to top */
+    left: 0; /* Align to left */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Cover aspect */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition */
+}
+
+.img-container img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    filter: brightness(1.1); /* Brightness effect on hover */
+}
+
+/* Title and Description Styling */
+.featured-drink-item h3 {
+    font-family: 'Lora', serif; /* Font style for item title */
+    font-size: 22px; /* Slightly larger font size for title */
+    color: #5d4e42; /* Color for item title */
+    margin-top: 12px; /* Margin above item title */
+}
+
+.featured-drink-item p {
+    font-size: 16px; /* Font size for description */
+    color: #7d6c61; /* Color for description */
+    margin-top: 8px; /* Margin above description */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .featured-drinks {
+        flex-direction: column; /* Stack items on small screens */
+        gap: 20px; /* Adjusted gap for smaller screens */
+    }
+
+    .featured-drink-item {
+        max-width: 100%; /* Full width on smaller screens */
+    }
+}
+
+/* Button Styling */
+.view-menu-button {
+    display: inline-block; /* Inline-block for button styling */
+    margin-top: 20px; /* Space above the button */
+    padding: 10px 20px; /* Padding for button */
+    font-family: 'Lora', serif; /* Consistent font style */
+    font-size: 18px; /* Font size for button */
+    color: #ffffff; /* White text color */
+    background-color: #6a4e1a; /* Dark brown background */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Slightly rounded corners */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.view-menu-button:hover {
+    background-color: #b57a4f; /* Lighter brown on hover */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.footer-about,
+.footer-links,
+.footer-schedule,
+.footer-contact {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+}
+
+.footer-about h4, .footer-links h4, .footer-schedule h4, .footer-contact h4 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.footer-links ul,
+.footer-schedule ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li,
+.footer-schedule li {
+    margin: 5px 0;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+
+.social-icons a:hover {
+    color: #ffb74d; /* Optional hover color */
+}
+
+

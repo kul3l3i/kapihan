@@ -1,0 +1,159 @@
+/* Sign-in Container */
+.signin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    background-image: url('img/coffee_bg.jpg'); /* Background with coffee texture or coffee shop image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0 100px;
+    position: relative;
+}
+
+/* Background Overlay */
+.signin::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(34, 27, 21, 0.7); /* Dark brown overlay for a warm look */
+    z-index: 1;
+}
+
+/* Content Section (Left) */
+.content-left {
+    color: #f5e1d3; /* Light coffee cream color */
+    max-width: 500px;
+    z-index: 2;
+}
+
+.content-left h1 {
+    font-size: 54px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #c27a56; /* Coffee-inspired tone */
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.content-left p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #f5e1d3;
+}
+
+/* Sign-in Form (Right) */
+.signin-content {
+    background: rgba(255, 245, 240, 0.9); /* Light coffee cream background */
+    padding: 40px;
+    border-radius: 10px;
+    color: #3d2c1f;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+/* Sign-in Form Header */
+.signin-content h2 {
+    font-family: 'Pacifico', cursive; /* Playful cursive font */
+    color: #6a4e1a;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 30px);
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #c27a56;
+    border-radius: 30px;
+    background: #fff;
+    font-size: 16px;
+    color: #3d2c1f;
+}
+
+/* Checkbox and Links */
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.options a {
+    color: #c27a56;
+    text-decoration: none;
+}
+
+.options input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Button Style */
+.btn {
+    background: linear-gradient(90deg, #c27a56, #8b4513);
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #8b4513, #c27a56);
+    transform: scale(1.05);
+}
+
+/* Footer Link */
+.footer-text {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+    color: #3d2c1f;
+}
+
+.footer-text a {
+    color: #c27a56;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .signin {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .content-left {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .signin-content {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-left h1 {
+        font-size: 36px;
+    }
+
+    .content-left p {
+        font-size: 16px;
+    }
+
+    .btn {
+        font-size: 16px;
+    }
+}

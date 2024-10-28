@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SayCoffee</title>
+    <link rel="stylesheet" href="contact.css">
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <h1 class="logo-text">SayCoffee</h1>
+                <div id="welcomeMessage"></div> <!-- Welcome message added here -->
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Home.html#about">About Us</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html">Contact</a></li> <!-- Link to the Contact page -->
+                </ul>
+            </nav>
+            
+            <div class="auth-links">
+                <div id="authDisplay">
+                    <a href="index.html"><i class="fas fa-user"></i> Sign In</a> / <a href="signup.html">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+
+    <main>
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <form id="contactForm" class="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required class="form-input">
+    
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required class="form-input">
+    
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required class="form-textarea"></textarea>
+    
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+    
+            <section class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3856.131971559085!2d120.97409927579172!3d14.967918177195305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33965164f4c57b2b%3A0x678f7120af9f16e8!2sTalacsan%2C%20San%20Rafael%2C%20Bulacan!5e0!3m2!1sen!2sph!4v1698194314507!5m2!1sen!2sph"
+                    width="100%" 
+                    height="300" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"></iframe>
+            </section>
+        </div>
+    
+        <div class="info-container">
+            <section class="contact-info">
+                <h3>Contact Information</h3>
+                <p><strong>Phone:</strong> 09633945919</p>
+                <p><strong>Email:</strong> support@saycoffee.com</p>
+                <p><strong>Address:</strong> Purok 6 Talacsan San Rafael Bulacan</p>
+            </section>
+    
+            <section class="business-hours">
+                <h3>Business Hours</h3>
+                <p><strong>Monday - Friday:</strong> 8:00 AM - 8:00 PM</p>
+                <p><strong>Saturday:</strong> 9:00 AM - 9:00 PM</p>
+                <p><strong>Sunday:</strong> Closed</p>
+            </section>
+    
+            <section class="social-media">
+                <h3>Connect with Us</h3>
+                <a href="https://www.facebook.com/LeiSayco?mibextid=ZbWKwL"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="https://www.instagram.com/huazele_lei/?hl=en"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="http://t.me/Iceerml"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            </section>
+        </div>
+    </main>
+    
+
+    <script>
+        // Function to update the auth display and welcome message
+        function updateAuthDisplay() {
+            const authDisplay = document.getElementById('authDisplay');
+            const username = localStorage.getItem('username'); // Get the username from localStorage
+            const welcomeMessage = document.getElementById('welcomeMessage');
+    
+            if (username) {
+                authDisplay.innerHTML = `
+                    <div class="dropdown">
+                        <a href="#" class="user-icon"><i class="fas fa-user"></i> ${username}</a>
+                        <div class="dropdown-content">
+                            <a href="#" id="signOut">Sign Out</a>
+                        </div>
+                    </div>
+                `;
+                welcomeMessage.innerHTML = `Welcome, ${username}!`; // Display welcome message
+    
+                // Sign out functionality
+                document.getElementById('signOut').addEventListener('click', function() {
+                    localStorage.removeItem('username'); // Remove username from localStorage
+                    window.location.href = 'sign-in.html'; // Redirect to sign-in page
+                });
+            } else {
+                authDisplay.innerHTML = ''; // Clear the display if no user is logged in
+                welcomeMessage.innerHTML = ''; // Clear welcome message
+            }
+        }
+    
+        window.onload = function() {
+            updateAuthDisplay(); // Call the function when the page loads
+        };
+    </script>
+    
+    <footer>
+        <div class="footer-container">
+            <!-- About Section -->
+            <div class="footer-about">
+                <h4>SayCoffee</h4>
+                <p>&copy; 2024 SayCoffee. Every sip has a story. All rights reserved.</p>
+                <div class="social-icons">
+                 <a href="https://www.facebook.com/LeiSayco?mibextid=ZbWKwL"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/huazele_lei/?hl=en"><i class="fab fa-instagram"></i></a>
+                <a href="http://t.me/Iceerml"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Home.html#about">About Us</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+    
+            <!-- Schedule Section -->
+            <div class="footer-schedule">
+                <h4>Business Hours</h4>
+                <ul>
+                    <li>Mon - Fri: 8:00 AM - 8:00 PM</li>
+                    <li>Sat: 9:00 AM - 9:00 PM</li>
+                    <li>Sun: Closed</li>
+                </ul>
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email:support@saycoffee.com</p>
+                <p>Phone: 09633945919</p>
+                <p>Location: Purok 6 Talacsan San Rafael Bulacan</p>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>

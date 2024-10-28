@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - SayCoffee</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <h1 class="logo-text">SayCoffee</h1>
+                <div id="welcomeMessage"></div> <!-- Welcome message added here -->
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Home.html#about">About Us</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html">Contact</a></li> <!-- Link to the Contact page -->
+                </ul>
+            </nav>
+            <div class="auth-links">
+                <div id="authDisplay">
+                    <a href="sign-in.html"><i class="fas fa-user"></i> Sign In</a> / <a href="signup.html">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="slideshow-container">
+        <div class="mySlides">
+            <img src="img/slider-1.jpg" style="width:100%">
+            <div class="banner-content">
+                <h1>Welcome to SayCoffee</h1>
+                <p>Every sip tells a story. Join us in exploring our delightful flavors!</p>
+                <a href="menu.html" class="btn">Buy Now</a> <!-- Links to the menu -->
+            </div>
+        </div>
+    
+        <div class="mySlides">
+            <img src="img/slider-2.jpg" style="width:100%">
+            <div class="banner-content">
+                <h1>Discover Our Journey</h1>
+                <p>Learn more about our passion for coffee and what inspires us.</p>
+                <a href="#about" class="btn">About Us</a> <!-- Links to the about section -->
+            </div>
+        </div>
+    
+        <div class="mySlides">
+            <img src="img/slider-3.jpg" style="width:100%">
+            <div class="banner-content">
+                <h1>We'd Love to Hear from You!</h1>
+                <p>Got questions or feedback? Reach out to us anytime.</p>
+                <a href="contact.html" class="btn">Contact Us</a> <!-- Links to the contact section -->
+            </div>
+        </div>
+    
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    
+    <br>
+
+    <!-- The dots/circles -->
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+
+        // Update the auth display
+        // Update the auth display
+    function updateAuthDisplay() {
+        const authDisplay = document.getElementById('authDisplay');
+        const username = localStorage.getItem('username');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+
+        if (username) {
+            authDisplay.innerHTML = `
+                <div class="dropdown">
+                    <a href="#" class="user-icon"><i class="fas fa-user"></i> ${username}</a>
+                    <div class="dropdown-content">
+                        <a href="#" id="signOut">Sign Out</a>
+                    </div>
+                </div>
+            `;
+            welcomeMessage.innerHTML = `Welcome, ${username}!`;
+
+            // Sign out functionality
+            document.getElementById('signOut').addEventListener('click', function() {
+                localStorage.removeItem('username'); // Remove username from localStorage
+                window.location.href = 'sign-in.html'; // Redirect to sign-in page
+            });
+        }
+    }
+
+    window.onload = function() {
+        updateAuthDisplay();
+    };
+        window.onload = function() {
+            updateAuthDisplay();
+        };
+    </script>
+
+   <!-- Best Sellers Section -->
+<section class="best-sellers-section">
+    <h2>Best Sellers</h2>
+    <div class="best-sellers">
+        <div class="best-seller-item">
+            <div class="img-container">
+                <img src="img/Iced_esspresso.webp" alt="Iced Espresso">
+            </div>
+            <h3>Iced Espresso</h3>
+            <div class="rating">★★★★☆</div>
+        </div>
+
+        <div class="best-seller-item">
+            <div class="img-container">
+                <img src="img/chai latte.webp" alt="Chai Latte">
+            </div>
+            <h3>Chai Latte</h3>
+            <div class="rating">★★★★★</div>
+        </div>
+
+        <div class="best-seller-item">
+            <div class="img-container">
+                <img src="img/Iced_cappucino.webp" alt="Iced Cappuccino">
+            </div>
+            <h3>Iced Cappuccino</h3>
+            <div class="rating">★★★★☆</div>
+        </div>
+    </div>
+</section>
+
+
+<div class="aboutUs" id="about">
+    <h2>About Us</h2>
+    <div class="aboutContent">
+        <div class="aboutImg">
+            <img src="img/about.webp" alt="About Us" class="about-image">
+        </div>
+        <div class="about-text">
+            <p>Welcome to <strong>SayCoffee</strong>—a sanctuary for coffee lovers where every cup tells a unique story. With a deep-rooted passion for quality and flavor, we meticulously source the finest beans from sustainable farms around the world. Step into our café and let the rich aromas envelop you as you enjoy a tranquil moment alone or share laughter with cherished friends. Our mission is to craft an inviting space that celebrates the joy of coffee and the connections it fosters. Join us on this delightful journey, and let’s savor each sip together.</p>
+            <button id="learnMoreBtn" class="btn">Learn More</button>
+            
+            <div id="ourStory" style="display: none;"> <!-- Initially hidden -->
+                <h3>Our Story</h3>
+                <p>Our journey began in a humble café, fueled by a vision to bring people together through the love of coffee. At <strong>SayCoffee</strong>, we’ve blossomed into a cherished community hub, where diverse flavors and shared experiences intertwine. We honor our commitment to sustainability and fair trade, ensuring that every cup we serve supports the farmers who pour their hearts into every bean. Join us as we celebrate not just coffee, but the stories, friendships, and memories made around each cup. Together, let’s explore new tastes and create moments that linger long after the last sip.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("learnMoreBtn").addEventListener("click", function() {
+    const ourStory = document.getElementById("ourStory");
+    if (ourStory.style.display === "none" || ourStory.style.display === "") {
+        ourStory.style.display = "block"; // Show the story
+        this.textContent = "Read Less"; // Change button text
+    } else {
+        ourStory.style.display = "none"; // Hide the story
+        this.textContent = "Learn More"; // Change button text back
+    }
+});
+
+</script>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section section">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-items">
+        <div class="testimonial-item">
+            <img src="img/kat.jfif" alt="Customer 1">
+            <p>"SayCoffee has the best iced lattes! I always leave happy and refreshed!"</p>
+            <h4>- Katy P.</h4>
+        </div>
+        <div class="testimonial-item">
+            <img src="img/fyang.jfif" alt="Customer 2">
+            <p>"A cozy place with a fantastic vibe. The caramel latte is my favorite!"</p>
+            <h4>- Fyang.</h4>
+        </div>
+        <div class="testimonial-item">
+            <img src="img/taylor.jfif" alt="Customer 3">
+            <p>"I love the atmosphere here. Perfect spot to enjoy my morning coffee!"</p>
+            <h4>- Taylor S.</h4>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Drinks Section -->
+<section class="featured-drinks-section section">
+    <h2>Featured Drinks</h2>
+    <div class="featured-drinks">
+        <div class="featured-drink-item">
+            <div class="img-container">
+                <img src="img/hot tea.webp" alt="Hot Tea">
+            </div>
+            <h3>Hot Tea</h3>
+            <p>A soothing blend of selected teas, perfect for relaxation.</p>
+        </div>
+        <div class="featured-drink-item">
+            <div class="img-container">
+                <img src="img/Iced_Chocolate.webp" alt="Iced Chocolate">
+            </div>
+            <h3>Iced Chocolate</h3>
+            <p>A rich and creamy chocolate drink served cold with ice.</p>
+        </div>
+        <div class="featured-drink-item">
+            <div class="img-container">
+                <img src="img/freshly brewed coffee.webp" alt="Fresh Brewed Coffee">
+            </div>
+            <h3>Fresh Brewed Coffee</h3>
+            <p>Expertly brewed coffee to kickstart your day with a bold flavor.</p>
+        </div>
+    </div>
+    <a href="menu.html" class="view-menu-button">View Full Menu</a> <!-- Button to view full menu -->
+</section>
+
+
+
+
+<footer>
+    <div class="footer-container">
+        <!-- About Section -->
+        <div class="footer-about">
+            <h4>SayCoffee</h4>
+            <p>&copy; 2024 SayCoffee. Every sip has a story. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/LeiSayco?mibextid=ZbWKwL"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/huazele_lei/?hl=en"><i class="fab fa-instagram"></i></a>
+                <a href="http://t.me/Iceerml"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Home.html#about">About Us</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Schedule Section -->
+        <div class="footer-schedule">
+            <h4>Business Hours</h4>
+            <ul>
+                <li>Mon - Fri: 8:00 AM - 8:00 PM</li>
+                <li>Sat: 9:00 AM - 9:00 PM</li>
+                <li>Sun: Closed</li>
+            </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p>Email:support@saycoffee.com</p>
+            <p>Phone: 09633945919</p>
+            <p>Location: Purok 6 Talacsan San Rafael Bulacan</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

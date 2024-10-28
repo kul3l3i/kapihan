@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - SayCoffee</title>
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="in.css">
+</head>
+<body> 
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <h1 class="logo-text">SayCoffee</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Home.html#about">About Us</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html">Contact</a></li> <!-- Link to the Contact page -->
+                </ul>
+            </nav>
+            <div class="auth-links">
+                <div id="authDisplay">
+                    <a href="index.html"><i class="fas fa-user"></i> Sign In</a> / 
+                    <a href="signup.html">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="signin">
+        <div class="content-left">
+            <h1>Welcome to SayCoffee</h1>
+            <p>Experience the art of coffee with every sip. Discover our carefully crafted blends that inspire and delight.</p>
+            <a href="Home.html"><button class="btn">Explore Now</button></a>
+        </div>
+        
+        <div class="signin-content">
+            <h2>Member Login</h2>
+            <form id="signinForm">
+                <input type="text" id="username" placeholder="Enter your username" required>
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <label>
+                        <input type="checkbox" id="showPassword"> Show Password
+                    </label>
+                </div>
+                <div class="options">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <div class="footer-text">
+                <p>Not a member? <a href="signup.html">Sign up now</a></p>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script>
+        // Function to check if the user is logged in and update the display
+function updateAuthDisplay() {
+    const authDisplay = document.getElementById('authDisplay');
+    const username = localStorage.getItem('username');
+    if (username) {
+        authDisplay.innerHTML = `
+            <div class="dropdown">
+                <a href="#" class="user-icon"><i class="fas fa-user"></i> ${username}</a>
+                <div class="dropdown-content">
+                    <a href="#" id="signOut">Sign Out</a>
+                </div>
+            </div>
+        `;
+        document.getElementById('signOut').addEventListener('click', function() {
+            localStorage.removeItem('username');
+            window.location.reload();
+        });
+    }
+}
+
+document.getElementById('signinForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    localStorage.setItem('username', username);
+    window.location.href = 'Home.html';
+});
+
+// Show password functionality using checkbox
+document.getElementById('showPassword').addEventListener('change', function() {
+    const passwordInput = document.getElementById('password');
+    
+    // Toggle the input type based on checkbox state
+    if (this.checked) {
+        passwordInput.type = 'text'; // Show the password
+    } else {
+        passwordInput.type = 'password'; // Hide the password
+    }
+});
+
+window.onload = function() {
+    updateAuthDisplay();
+};
+    </script>
+    
+    
+    
+</body>
+</html>

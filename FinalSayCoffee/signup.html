@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - SayCoffee</title>
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body> 
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <h1 class="logo-text">SayCoffee</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Home.html#about">About Us</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-links">
+                <a href="index.html"><i class="fas fa-user"></i> Sign In</a> / 
+                <a href="signup.html">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="signup">
+        <div class="content-left">
+            <h1>Welcome to SayCoffee</h1>
+            <p>Experience the art of coffee with every sip. Discover our carefully crafted blends that inspire and delight.</p>
+            <a href="Home.html"><button class="btn">Explore Now</button></a>
+        </div>
+        
+        <div class="signup-content">
+            <h2>Create an Account</h2>
+            <form id="signupForm">
+                <input type="text" id="username" placeholder="Enter your username" required>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                <div class="options">
+                    <label><input type="checkbox" required> I agree to the terms and conditions</label>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <div class="footer-text">
+                <p>Already a member? <a href="index.html">Log in now</a></p>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <script>
+        // Form Submission Logic
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+    
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+    
+            // Validation checks
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+            } else if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+            } else {
+                // Simulate successful registration
+                alert("Registration successful!");
+                setTimeout(() => {
+                    window.location.href = "index.html"; // Redirect to sign-in page after success
+                }, 500); // 500 ms delay before redirection
+            }
+        });
+    </script>
+    
+</body>
+</html>

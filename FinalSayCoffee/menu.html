@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu- SayCoffee</title>
+    <link rel="stylesheet" href="menu.css">
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <h1 class="logo-text">SayCoffee</h1>
+                <div id="welcomeMessage"></div> <!-- Welcome message added here -->
+
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="Home.html#about">About Us</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-links">
+                <div id="authDisplay">
+                    <a href="index.html"><i class="fas fa-user"></i> Sign In</a> / 
+                    <a href="signup.html">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+    <script>
+        // Update the auth display
+    function updateAuthDisplay() {
+        const authDisplay = document.getElementById('authDisplay');
+        const username = localStorage.getItem('username');
+        const welcomeMessage = document.getElementById('welcomeMessage');
+
+        if (username) {
+            authDisplay.innerHTML = `
+                <div class="dropdown">
+                    <a href="#" class="user-icon"><i class="fas fa-user"></i> ${username}</a>
+                    <div class="dropdown-content">
+                        <a href="#" id="signOut">Sign Out</a>
+                    </div>
+                </div>
+            `;
+            welcomeMessage.innerHTML = `Welcome, ${username}!`;
+
+            // Sign out functionality
+            document.getElementById('signOut').addEventListener('click', function() {
+                localStorage.removeItem('username'); // Remove username from localStorage
+                window.location.href = 'sign-in.html'; // Redirect to sign-in page
+            });
+        }
+    }
+
+    window.onload = function() {
+        updateAuthDisplay();
+    };
+
+        window.onload = function() {
+            updateAuthDisplay();
+        };
+    </script>
+<br> 
+<h2 class="menu-label">Menu</h2> <!-- Added Menu Label -->
+<div class="menu">
+    <div class="menu-item" data-item="Iced Espresso" data-price="₱175" data-ingredients="Espresso, Ice, Water" data-nutrition="50 calories" data-image="img/Iced_espresso.webp">
+        <img src="img/Iced_esspresso.webp" alt="Iced Espresso" class="menu-image">
+        <h3>Iced Espresso</h3>
+        <p class="description">Refreshing 16oz iced espresso with ice and water.</p>
+        <p class="price">₱175</p>
+        <button class="order-now">Buy Now</button>
+    </div>
+    <div class="menu-item" data-item="Iced Latte" data-price="₱200" data-ingredients="Espresso, Milk, Ice" data-nutrition="150 calories" data-image="img/Ice_latte.webp">
+        <img src="img/Ice_latte.webp" alt="Iced Latte" class="menu-image">
+        <h3>Iced Latte</h3>
+        <p class="description">Creamy 16oz iced latte made with espresso, milk, and ice.</p>
+        <p class="price">₱200</p>
+        <button class="order-now">Buy Now</button>
+    </div>
+    <div class="menu-item" data-item="Iced Cappuccino" data-price="₱225" data-ingredients="Espresso, Milk Foam, Ice" data-nutrition="200 calories" data-image="img/Iced_cappuccino.webp">
+        <img src="img/Iced_cappucino.webp" alt="Iced Cappuccino" class="menu-image">
+        <h3>Iced Cappuccino</h3>
+        <p class="description">Delicious 16oz iced cappuccino topped with milk foam.</p>
+        <p class="price">₱225</p>
+        <button class="order-now">Buy Now</button>
+    </div>
+    <div class="menu-item" data-item="Iced Black Tea" data-price="₱200" data-ingredients="Black Tea, Ice" data-nutrition="30 calories" data-image="img/Iced_black.webp">
+        <img src="img/Iced_black.webp" alt="Iced Black Tea" class="menu-image">
+        <h3>Iced Black Tea</h3>
+        <p class="description">Refreshing 16oz iced black tea served chilled.</p>
+        <p class="price">₱200</p>
+        <button class="order-now">Buy Now</button>
+    </div>
+    <div class="menu-item" data-item="Iced Chocolate" data-price="₱200" data-ingredients="Cocoa, Milk, Ice" data-nutrition="180 calories" data-image="img/Iced_Chocolate.webp">
+        <img src="img/Iced_Chocolate.webp" alt="Iced Chocolate" class="menu-image">
+        <h3>Iced Chocolate</h3>
+        <p class="description">Indulgent 16oz iced chocolate made with cocoa and milk.</p>
+        <p class="price">₱200</p>
+        <button class="order-now">Buy Now</button>
+    </div>
+    <div class="menu-item" data-item="Iced Green Tea" data-price="₱225" data-ingredients="Green Tea, Ice" data-nutrition="40 calories" data-image="img/Iced_green_tea.webp">
+        <img src="img/Iced_green_tea.webp" alt="Iced Green Tea" class="menu-image">
+        <h3>Iced Green Tea</h3>
+        <p class="description">Refreshing 16oz iced green tea with a hint of sweetness.</p>
+        <p class="price">₱225</p>
+        <button class="order-now">Buy Now</button>
+    </div>
+    <div class="menu-item" data-item="Iced Chai Latte" data-price="₱175" data-ingredients="Chai Tea, Milk, Ice" data-nutrition="120 calories" data-image="img/Ice_chai_latte.webp">
+        <img src="img/Ice_chai_latte.webp" alt="Iced Chai Latte" class="menu-image">
+        <h3>Iced Chai Latte</h3>
+        <p class="description">Spicy and creamy 16oz iced chai latte.</p>
+        <p class="price">₱175</p>
+        <button class="order-now">Buy Now</button>
+    </div>
+    <div class="menu-item" data-item="Iced Matcha Tea" data-price="₱200" data-ingredients="Matcha, Milk, Ice" data-nutrition="70 calories" data-image="img/Iced_matcha.webp">
+        <img src="img/Iced_mattcha.webp" alt="Iced Matcha Tea" class="menu-image">
+        <h3>Iced Matcha Tea</h3>
+        <p class="description">Smooth 16oz iced matcha tea blended with milk.</p>
+        <p class="price">₱200</p>
+        <button class="order-now">Buy Now</button>
+    </div>
+    <div class="menu-item" data-item="Cappuccino" data-price="₱225" data-ingredients="Espresso, Milk Foam" data-nutrition="200 calories" data-image="img/capuccino.webp">
+        <img src="img/capuccino.webp" alt="Cappuccino" class="menu-image">
+        <h3>Cappuccino</h3>
+        <p class="description">Rich cappuccino topped with milk foam.</p>
+        <p class="price">₱225</p>
+        <button class="order-now">Buy Now</button>
+    </div>
+    <div class="menu-item" data-item="Chai Latte" data-price="₱175" data-ingredients="Chai Tea, Milk" data-nutrition="100 calories" data-image="img/chai_latte.webp">
+        <img src="img/chai latte.webp" alt="Chai Latte" class="menu-image">
+        <h3>Chai Latte</h3>
+        <p class="description">Aromatic chai latte made with spiced tea and milk.</p>
+        <p class="price">₱175</p>
+        <button class="order-now">Buy Now</button>
+    </div>
+    <div class="menu-item" data-item="Freshly Brewed Coffee" data-price="₱200" data-ingredients="Coffee, Water" data-nutrition="5 calories" data-image="img/freshly_brewed_coffee.webp">
+        <img src="img/freshly brewed coffee.webp" alt="Freshly Brewed Coffee" class="menu-image">
+        <h3>Freshly Brewed Coffee</h3>
+        <p class="description">Classic freshly brewed coffee for a bold flavor.</p>
+        <p class="price">₱200</p>
+        <button class="order-now">Buy Now</button>
+    </div>
+    <div class="menu-item" data-item="Hot Tea" data-price="₱200" data-ingredients="Tea Leaves, Water" data-nutrition="0 calories" data-image="img/hot_tea.webp">
+        <img src="img/hot tea.webp" alt="Hot Tea" class="menu-image">
+        <h3>Hot Tea</h3>
+        <p class="description">Comforting hot tea brewed from premium tea leaves.</p>
+        <p class="price">₱200</p>
+        <button class="order-now">Buy Now</button>
+    </div>
+</div>
+
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <img id="modal-item-image" class="modal-image" src="" alt="Item Image">
+        <h2 id="modal-item-name"></h2>
+        <p class="price" id="modal-price"></p>
+        <p id="modal-ingredients"></p>
+        <p id="modal-nutrition"></p>
+        
+        <!-- Input for payment -->
+        <div class="payment-container">
+            <label for="payment-amount">Enter Payment Amount:</label>
+            <input type="number" id="payment-amount" placeholder="Enter amount" min="0">
+        </div>
+        
+        <button class="order-now">Confirm Order</button>
+    </div>
+</div>
+
+
+<script>
+    // Get modal elements
+ const modal = document.getElementById('modal');
+ const closeButton = document.querySelector('.close-button');
+ const menuItems = document.querySelectorAll('.menu-item');
+ const paymentAmountInput = document.getElementById('payment-amount'); // Get payment amount input field
+ 
+ // Function to open the modal
+ function openModal(item) {
+     const itemName = item.getAttribute('data-item');
+     const itemPrice = item.getAttribute('data-price');
+     const itemIngredients = item.getAttribute('data-ingredients');
+     const itemNutrition = item.getAttribute('data-nutrition');
+     const itemImage = item.querySelector('.menu-image').src; // Get image URL from <img> tag
+ 
+     document.getElementById('modal-item-name').innerText = itemName;
+     document.getElementById('modal-price').innerText = itemPrice;
+     document.getElementById('modal-ingredients').innerText = `Ingredients: ${itemIngredients}`;
+     document.getElementById('modal-nutrition').innerText = `Nutrition: ${itemNutrition}`;
+     
+     // Set the image source
+     document.getElementById('modal-item-image').src = itemImage;
+ 
+     // Reset the payment amount input field
+     paymentAmountInput.value = '';
+ 
+     // Show the modal
+     modal.style.display = "block";
+ 
+     // Set up the Order Now button to handle order confirmation
+     const orderNowButton = modal.querySelector('.order-now');
+     orderNowButton.onclick = () => handleOrder(itemName, itemPrice);
+ }
+ 
+// Function to handle order confirmation with payment and change calculation
+function handleOrder(itemName, itemPrice) {
+    const username = localStorage.getItem('username');
+    const customerName = username ? username : prompt("Please enter your name:");
+    
+    if (customerName) {
+        const paymentAmount = parseFloat(paymentAmountInput.value); // Use the input field directly
+        const price = parseFloat(itemPrice.replace(/[^\d.-]/g, '')); // Convert item price to a number
+
+        if (isNaN(paymentAmount) || paymentAmount < price) {
+            alert("Invalid payment amount or insufficient amount. Please enter a valid amount.");
+        } else {
+            const change = paymentAmount - price;
+
+            // Format the receipt message
+            const receiptMessage = `
+                ********** SayCoffee **********
+                ---------------------------------
+                Order Details:
+                Item Ordered: ${itemName}
+                Price: ₱${price.toFixed(2)}
+                Payment: ₱${paymentAmount.toFixed(2)}
+                Change: ₱${change.toFixed(2)}
+                ---------------------------------
+                Thank you for your order, ${customerName}!
+                Visit us again for more delicious coffee!
+                *******************************
+            `;
+            
+            // Display confirmation message with payment details
+            alert(receiptMessage);
+            
+            // Close the modal after order confirmation
+            modal.style.display = "none";
+
+            // Reset the payment amount input field after confirming the order
+            paymentAmountInput.value = '';
+        }
+    } else {
+        alert("Order canceled.");
+    }
+}
+
+// Event listeners for each menu item to open the modal
+menuItems.forEach(item => {
+    const orderButton = item.querySelector('.order-now');
+    orderButton.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent event bubbling
+        openModal(item);
+    });
+});
+
+// Event listener to close the modal when the close button is clicked
+closeButton.addEventListener('click', () => {
+    modal.style.display = "none";
+});
+
+// Close the modal when clicking outside of the modal content
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+ </script>
+ 
+<br> <br> <br>
+
+<footer>
+    <div class="footer-container">
+        <!-- About Section -->
+        <div class="footer-about">
+            <h4>SayCoffee</h4>
+            <p>&copy; 2024 SayCoffee. Every sip has a story. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/LeiSayco?mibextid=ZbWKwL"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/huazele_lei/?hl=en"><i class="fab fa-instagram"></i></a>
+                <a href="http://t.me/Iceerml"><i class="fab fa-telegram-plane"></i></a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Home.html#about">About Us</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Schedule Section -->
+        <div class="footer-schedule">
+            <h4>Business Hours</h4>
+            <ul>
+                <li>Mon - Fri: 8:00 AM - 8:00 PM</li>
+                <li>Sat: 9:00 AM - 9:00 PM</li>
+                <li>Sun: Closed</li>
+            </ul>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p>Email:support@saycoffee.com</p>
+            <p>Phone: 09633945919</p>
+            <p>Location: Purok 6 Talacsan San Rafael Bulacan</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
